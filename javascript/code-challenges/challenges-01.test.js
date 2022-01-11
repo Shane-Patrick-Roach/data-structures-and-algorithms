@@ -141,8 +141,8 @@ const createList = (availableItems) => {
   let final = [];
 
   availableItems.forEach(item => {
-    if(item[1] === 'available: true'){
-      final.push(item);
+    if(item.available === true){
+      final.push(item.name);
     }
 
   });
