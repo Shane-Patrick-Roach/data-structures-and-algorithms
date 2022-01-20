@@ -98,7 +98,7 @@ Write a function named containsWorld that takes in a string or number of any len
 ------------------------------------------------------------------------------------------------ */
 
 const containsWorld = (input) => {
-  let regex = /\w+/;
+  let regex = /world/;
 
   return regex.test(input);
 };
@@ -124,11 +124,9 @@ Write a function named citiesAtoJ that takes in an array of city names and uses 
 ------------------------------------------------------------------------------------------------ */
 
 const citiesAtoJ = (arr) => {
-  let regex = /[A-J][a-z]*/g;
+  let regex = /^[A-J]/;
 
-  let str = arr.join(' ');
-
-  return str.match(regex) || [];
+  return arr.filter(city => regex.test(city));
 };
 
 /* ------------------------------------------------------------------------------------------------
