@@ -38,7 +38,7 @@ Write a function named checkValues that takes in an object and a value and retur
 
 const checkValues = (obj, value) => {
   let result;
-  if (Object.values(obj) === value) {
+  if (Object.values(obj).includes(value)) {
     result = true;
   }
   else {
@@ -133,7 +133,6 @@ const getHouses = (arr) => {
     let names = Object.values(obj);
     houses.push(names[names.length-1]);
   });
-  
   return houses;
 };
 
@@ -150,8 +149,19 @@ hasChildrenValues(characters, 'Sansa') will return false
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenValues = (arr, character) => {
-  // Solution code here...
+  let children = 0;
 
+  arr.forEach(person => {
+    if(person.name === character){
+      Object.keys(person).forEach((key,idx) => {
+        if (key === 'children'){
+          children = Object.values(person)[idx].length;
+        }
+      });
+    }
+
+  });
+  return children ? true : false;
 };
 
 /* ------------------------------------------------------------------------------------------------
