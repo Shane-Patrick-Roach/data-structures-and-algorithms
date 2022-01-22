@@ -8,10 +8,7 @@ Write a function named returnTen, takes in a string and uses split and splice to
 ------------------------------------------------------------------------------------------------ */
 
 function returnTen(str){
-  let arr = str.split('');
-  let modArr = arr.splice(-9);
-
-  return modArr;
+  return str.split('').splice(-10);
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -32,10 +29,10 @@ const findMax = (matrix) => {
 
   let results = [];
 
-  matrix.forEach(arr => {
-    let localMax = arr.Math.max(...arr);
+  for (let i = 0; i < matrix.length; i++) {
+    let localMax = Math.max(...matrix[i]);
     results.push(localMax);
-  });
+  }
 
   return Math.max(...results);
 };
@@ -58,13 +55,11 @@ const totalSum = (matrix) => {
   
   let bucket = 0;
 
-  for(let i = 0; i < matrix.length; i++){
-    matrix[i].forEach(element => {
-
-      for(let j =0; j< element.length; j++){
-        bucket = bucket + element[j];
-      }
-    });
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      let value = matrix[i][j];
+      bucket = bucket + value;
+    }
   }
   
   return bucket;
@@ -94,8 +89,18 @@ const alkiBeach = [33, 31, 147, 130, 27, 93, 38, 126, 141, 63, 46, 17];
 const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
 const grandTotal = (stores) => {
-  // Solution code here...
+  
+  let totalHourSales = [0,0,0,0,0,0,0,0,0,0,0,0];
 
+  for (let i = 0; i < stores.length; i++) {
+    for (let j = 0; j < stores[i].length; j++) {
+      let hour = stores[i][j];
+      totalHourSales[j] += hour;
+    }
+    
+  }
+
+  return (totalHourSales);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -109,7 +114,14 @@ Write a function named salesData that uses forEach to iterate over the hourlySal
 ------------------------------------------------------------------------------------------------ */
 
 const salesData = (hours, data) => {
-  // Solution code here...
+
+  hours.forEach(hour => {
+    hour.map(`sales: '${hour}:`)
+    
+  });
+
+
+  return data;
 };
 
 /* ------------------------------------------------------------------------------------------------
