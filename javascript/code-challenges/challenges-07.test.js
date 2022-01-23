@@ -67,14 +67,11 @@ For example, if the input is 'Welcome', the output will be:
 
 const howMuchPencil = (str) => {
   let result = [];
-  let strArr = str.split;
 
-  for (let i = 0; i < strArr.length; i++) {
-    slice(strArr[i]);
+  for (let i = 0; i < 8; i++) {
+    result.push(str.slice(i));
+  }
 
-    }
-    
-  
   return result;
 };
 
