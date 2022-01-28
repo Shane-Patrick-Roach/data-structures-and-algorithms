@@ -9,10 +9,8 @@ Write a function named longestString that takes in an array of strings and retur
 const longestString = (arr) => {
   let results = arr.reduce(function (a,b) {
     return a.length > b.length ? a : b;
-  });
-
-  let filter = arr.indexOf(results);
-  return filter;
+  }, '');
+  return arr.indexOf(results);
 };
   
 /* ------------------------------------------------------------------------------------------------
@@ -60,15 +58,13 @@ For example, (123) 456-7890 returns 1234567890
 
 const standardizePhoneNumbers = (arr) => {
 
-  return arr.map(str => {
+  let results = arr.map(str => {
     let newNumber = '';
-    for (let i = 0; i < str.length; i++) {
-      if (typeof str.charAt(i) === 'number') {
-        newNumber += str.charAt(i);
-      }
-    }
+    newNumber = str.substring(1,4) + str.substring(6,9) +str.substring(10,14);
     return newNumber;
   });
+
+  return results;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -80,7 +76,15 @@ For example, 'abcdefg' returns 'bdf'
 ------------------------------------------------------------------------------------------------ */
 
 const onlyOddChars = (str) => {
-  // Solution code here...
+  let newStr = '';
+  
+  for (let i = 0; i < str.length; i++) {
+    if (i % 2 !== 0) {
+      newStr += str.charAt(i);
+    }
+  }
+
+  return newStr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -90,7 +94,16 @@ Write a function named allHappy that takes in an array of strings and returns a 
 ------------------------------------------------------------------------------------------------ */
 
 const allHappy = (arr) => {
-  // Solution code here...
+  
+  let results = arr.map(str => {
+    let newNum = false;
+    if (str.includes(':)')){
+      newNum = true;
+    }
+    return newNum;
+  });
+
+  return results.every(ele => ele === true);
 };
 
 /* ------------------------------------------------------------------------------------------------
