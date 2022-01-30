@@ -18,9 +18,9 @@ Becomes:
 ]
 ------------------------------------------------------------------------------------------------ */
 
-function transformToLis(obj){
-  return Object.keys(obj).map(key => 
-    `<li>${key}: ${obj[key]}</li>`); 
+function transformToLis(obj) {
+  return Object.keys(obj).map(key =>
+    `<li>${key}: ${obj[key]}</li>`);
 }
 
 /* ------------------------------------------------------------------------------------------------
@@ -39,7 +39,7 @@ const count = (target, input) => {
 
   for (let i = 0; i < input.length; i++) {
     for (let j = 0; j < input[i].length; j++) {
-      if (input[i][j] === target){
+      if (input[i][j] === target) {
         counter = counter + 1;
       }
     }
@@ -84,17 +84,11 @@ For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
 
 const divisibleByFiveTwoToThePower = (input) => {
 
-  for (let i = 0; i < input.length; i++) {
-    for (let j = 0; j < input[i].length; j++) {
-      if (input[i][j] % 5 !== 0){
-        input.splice(input[i][j],1);
-      }
-      else if(isNaN(input[i][j])){
-        input.splice(input[i][j],1);
-      }
-    }
-  }
-  return input.map(int => Math.pow(int,2));
+
+  return input.forEach(arr => {
+    arr.filter(ele => typeof ele === 'number');
+  });
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -160,7 +154,20 @@ let starWarsData = [{
 }];
 
 let findMaleAndFemale = (data) => {
-  // Solution code here...
+
+  let results = [];
+
+  data.forEach(obj => {
+    if (obj.gender === 'male') {
+      results.push(obj.name);
+    }
+    else if (obj.gender === 'female') {
+      results.push(obj.name);
+    }
+
+  });
+
+  return results.join(' and ');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -170,7 +177,10 @@ Write a function named findShortest that, given the Star Wars data from Challeng
 ------------------------------------------------------------------------------------------------ */
 
 let findShortest = (data) => {
-  // Solution code here...
+  let results = data.reduce((prev, curr) => {
+    return prev.height > curr.height ? prev : curr;
+  });
+  return results.name;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -186,8 +196,8 @@ Run your tests from the console: jest challenges-10.test.js
 
 describe('Testing challenge 1', () => {
   test('It should return a list of key value pairs inside of li tags', () => {
-    expect(transformToLis({name: 'bob', age: 32})[0]).toStrictEqual(`<li>name: bob</li>`);
-    expect(transformToLis({name: 'bob', age: 32})[1]).toStrictEqual(`<li>age: 32</li>`);
+    expect(transformToLis({ name: 'bob', age: 32 })[0]).toStrictEqual(`<li>name: bob</li>`);
+    expect(transformToLis({ name: 'bob', age: 32 })[1]).toStrictEqual(`<li>age: 32</li>`);
     expect(transformToLis({})).toStrictEqual([]);
   });
 });
