@@ -11,8 +11,18 @@ Write a function named screenForNames that takes in an array of strings and uses
 ------------------------------------------------------------------------------------------------ */
 
 const screenForNames = (arr) => {
-  // Solution code here...
-}
+  let regex =/^(Mr. |Ms. |Dr. |Mrs. )[A-Za-z]+$/g;
+
+  let results = [];
+
+  arr.forEach(name =>{
+    if(regex.test(name) === true){
+      results.push(name);
+    }
+  });
+
+  return results;
+};
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -100,10 +110,13 @@ let starWarsData = [{
 }];
 
 let biggerThanLuke = (arr) => {
-  
 
-  return arr.filter(obj => obj.mass > );
+  let luke = arr.find(char => char.name === 'Luke Skywalker');
 
+  return arr
+    .filter(obj => parseInt(obj.mass) > luke.mass)
+    .map(obj => obj.name)
+    .join(' - ');
 
 };
 
@@ -123,12 +136,15 @@ This data could be sorted by name or price.
 
 const sortBy = (property, arr) => {
   
-
-  arr.reduce((a,b) =>)
-
-
-
-  })
+  return arr.sort((a,b) => {
+    if (a[property] < b[property]){
+      return -1;
+    } else if (a[property] > b[property]){
+      return 1;
+    } else {
+      return 0;
+    }
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -144,7 +160,9 @@ https://secure.com returns true because the URL is secure
 https:/missingslash.org returns false because the URL is malformed
 ------------------------------------------------------------------------------------------------ */
 const isSecure = (url) => {
-  // Solution code here...
+  let regex = /^(https:\/\/)+[A-Za-z]+\.(com|net|org)/g;
+
+  return regex.test(url);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -167,7 +185,7 @@ Here is a sample board:
 ------------------------------------------------------------------------------------------------ */
 
 const detectTicTacToeWin = (board) => {
-  // Solution code here...
+  
 };
 
 /* ------------------------------------------------------------------------------------------------
